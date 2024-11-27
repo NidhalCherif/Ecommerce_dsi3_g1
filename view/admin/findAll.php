@@ -1,17 +1,22 @@
-    <?php
-    ob_start();
-    require_once "../classes/Crud_produit.php";
-    $crud = new Crud_produit();
-    $LesProduits = $crud->findAll();
-    ?>
-    <table class="table">
+<?php
+ob_start();
+?>
+<a href="../../controller/admin/add.php" class="btn btn-secondary btn-lg float-end">
+    Ajout d'un produit
+</a>
+<table id="example" class="table">
+    <thead>
         <tr>
             <th>Identifiant</th>
             <th>Libellé</th>
             <th>Prix</th>
             <th>Quantité</th>
-            <th colspan=3>Action</th>
+            <th>Action</th>
+            <th></th>
+            <th></th>
         </tr>
+    </thead>
+    <tbody>
         <?php
         foreach ($LesProduits as $produit) {
         ?>
@@ -30,9 +35,9 @@
         }
 
         ?>
-
-    </table>
-    <?php
-    $contenu = ob_get_clean();
-    $titre = "Liste des produits";
-    include "layout.php" ?>
+    </tbody>
+</table>
+<?php
+$contenu = ob_get_clean();
+$titre = "Liste des produits";
+include "layout.php" ?>
